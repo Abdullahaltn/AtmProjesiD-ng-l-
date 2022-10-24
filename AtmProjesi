@@ -1,0 +1,81 @@
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args) {
+
+        String kullaniciAdi, sifre;
+        int gerisayim = 3;
+        int secim;
+        int bakiye = 5000;
+        int yatirilanbakiye;
+        int cekilecekbakiye;
+
+        Scanner girdi = new Scanner(System.in);
+
+        System.out.println("merhaba kodluyoruz Atmsine Hoşgeldiniz.." +
+                "\nlütfen kullanıcı adınızı ardından şifrenizi giriniz.");
+
+
+        while (gerisayim > 0) {
+            kullaniciAdi = girdi.nextLine();
+            sifre = girdi.nextLine();
+            if (kullaniciAdi.equals("abdullah") && sifre.equals("altin")) {
+
+                do {
+                    System.out.println("Tebrikler giriş yaptınız.. " +
+                            "\n 1-para yatırmak " +
+                            "\n2-para çekmek" +
+                            "\n3-bakiye sormak" +
+                            "\n4-çıkış yapmak");
+                    secim = girdi.nextInt();
+
+                    switch (secim) {
+
+                        case 1:
+                            System.out.println("ne kadar yatırmak istiyorsunuz?");
+                            yatirilanbakiye = girdi.nextInt();
+                            System.out.println("tebrikler para yatırma işlemi başarılı");
+                            System.out.println("yatırdınız miktar" + yatirilanbakiye);
+                            bakiye = yatirilanbakiye + bakiye;
+                            System.out.println("yeni bakiyeniz" + bakiye);
+                            break;
+                        case 2:
+                            System.out.println("ne kadar çekim yapacaksınız?");
+                            cekilecekbakiye = girdi.nextInt();
+                            if (cekilecekbakiye < bakiye) {
+                                bakiye = bakiye - cekilecekbakiye;
+                                System.out.println("tebrikler çekim yaptınız yeni bakiyeniz:" + bakiye);
+                            } else {
+                                System.out.println("bakiyeniz yetersiz.");
+                            }
+                            break;
+                        case 3:
+                            System.out.println("bakiyeniz: " + bakiye);
+                            break;
+                        case 4:
+                            System.out.println("çıkış yapıyorsunuz..");
+
+                    }
+
+                } while (secim != 4);
+                break;
+
+
+            } else {
+                gerisayim--;
+                System.out.println("şifreniz veya kullanıcı adınız hatalı kalan hakkınız" + gerisayim);
+
+
+            }
+
+
+        }System.out.println("Çıkış yapılmıştır hesabınızdan.");
+
+    }
+
+
+
+
+
+}
